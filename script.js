@@ -39,8 +39,9 @@ const inputArea = document.querySelector('.input-area');
           },
           body: JSON.stringify({ userInput }),
         });
-         console.log(result);
+     
            const result = await response.json();
+              console.log(result);
   const responseText = result.greeting;
        console.log(responseText);
         messages.push({ type: 'received', content: responseText });
