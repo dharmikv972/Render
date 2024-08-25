@@ -30,21 +30,19 @@ const inputArea = document.querySelector('.input-area');
       inputField.value = '';
       messages.push({ type: 'sent', content: userInput });
       renderMessages();
-  console.log(userInput);
+ const name = userInput;
       try {
  const response = await fetch('/api/greet', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userInput }),
+          body: JSON.stringify({ name }),
         });
      
            const result = await response.json();
-              console.log(result);
-  const responseText = result.greeting;
        console.log(responseText);
-        messages.push({ type: 'received', content: responseText });
+        messages.push({ type: 'received', content: reult.grreting });
         renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
       } catch (error) {
