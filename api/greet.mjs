@@ -41,7 +41,7 @@ export default async function handler(req, res) {
           temperature: 0.7,
           topP: 0.95,
           topK: 64,
-          maxOutputTokens: 80,
+          maxOutputTokens: 8000,
           responseMimeType: "text/plain",
         },
         systemInstruction: instructions,
