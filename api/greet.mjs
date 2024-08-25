@@ -13,22 +13,14 @@ export default async function handler(req, res) {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // Uncomment and adjust if you need to use safety settings and make actual AI requests
-    // const safetySettings = [
-    //   {
-    //     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    //     threshold: HarmBlockThreshold.BLOCK_NONE,
-    //   },
+     const safetySettings = [
+      {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    /   threshold: HarmBlockThreshold.BLOCK_NONE,
+     },
     //   // Add other safety settings as needed
-    // ];
+    ];
 
-    // Example prompt (if needed)
-    // const prompt = `Imagine you're a helpful but impatient older brother...`;
-
-    // Generate content using the AI model (if needed)
-    // const result = await model.generateContent({
-    //   prompt,
-    //   safetySettings
-    // });
 
     // Respond with a simple greeting for now
     const greeting = `Hello, ${name}!`;
