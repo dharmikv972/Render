@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const sendButton = document.getElementById('send-button');
   const messageArea = document.getElementById('message-area');
   const clearChatButton = document.getElementById('clear-chat');
-
+renderMessages();
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
   function createMessageElement(type, content) {
