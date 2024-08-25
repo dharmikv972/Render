@@ -129,6 +129,16 @@ color:var(--message-color);
 }
 
 .message.sent::after {
+      	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  right: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: var(--sent-message-bg-color) transparent transparent transparent;
   content: '';
   position: absolute;
   top: 0px/* Adjust as needed */; 
@@ -139,7 +149,6 @@ color:var(--message-color);
   border-bottom: 20px solid transparent; 
 }
 .message.sent {
-      z-index:4;
   background-color: var(--sent-message-bg-color);
   margin-left: auto;
 border-radius: 8px 0 8px 8px; 
