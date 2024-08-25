@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generative AI Client</title>
+</head>
+<body>
+  <h1>Generative AI Interaction</h1>
+  <input type="text" id="action" placeholder="Enter action" value="start">
+  <textarea id="input" placeholder="Type your message..."></textarea>
+  <button id="send-button">Send</button>
+  <p id="response"></p>
+
+  <script>
+    document.getElementById('send-button').addEventListener('click', async function() {
+      const action = document.getElementById('action').value;
+      const message = document.getElementById('input').value;
+
+      try {
+        const response = await fetch('/api/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ action, message }),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          document.getElementById('response').innerText = `Response: ${result.response}`;
+        } else {
+          const error = await response.text();
+          document.getElementById('response').innerText = `Error: ${error}`;
+        }
+      } catch (error) {
+        document.getElementById('response').innerText = `Error: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
