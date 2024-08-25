@@ -1,5 +1,5 @@
 
-import { GoogleGenerativeAI } from "https://esm.run@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 export default function handler(req, res) {
   if (req.method === 'POST') {
     const { name } = req.body;
