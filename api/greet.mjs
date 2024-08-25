@@ -1,18 +1,16 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
-const API_KEY = "AIzaSyDEDNIwl3aMAT5l_Q-_SOWlFUyNY-d1UBE"; // Ensure API key is set in environment variables
+
+ const API_KEY = "AIzaSyDEDNIwl3aMAT5l_Q-_SOWlFUyNY-d1UBE";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { message, sessionId, history } = req.body;
+      const { name } = req.body;
 
-      if (!message || typeof message !== 'string' || !sessionId || typeof sessionId !== 'string') {
-        return res.status(400).json({ error: 'Message and sessionId are required and must be strings' });
+      if (!name || typeof name !== 'string') {
+        return res.status(400).json({ error: 'Name is required and must be a string' });
       }
-
-      // Ensure history is an array
-      const chatHistory = Array.isArray(history) ? history : [];
 
       const safetySettings = [
         {
@@ -35,6 +33,7 @@ export default async function handler(req, res) {
 
       const instructions = `Imagine you're a helpful but impatient older brother...`;
 
+      // Initialize the AI client and model
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({
         model: "gemini-1.5-flash",
@@ -49,14 +48,27 @@ export default async function handler(req, res) {
         safetySettings,
       });
 
-      // Create a new chat instance
-      const chat = await model.startChat({ history: chatHistory });
+      // Start a chat session with the AI model
+      const chat = await model.startChat({
+        history: [
+          {
+            role: "user",
+            parts: [{ text: "Hello" }],
+          },
+          {
+            role: "model",
+            parts: [{ text: "Great to meet you. What would you like to know?" }],
+          },
+        ],
+      });
 
-      // Send message and get response
-      const result = await chat.sendMessage(message);
+      // Send a message to the chat
+      const result = await chat.sendMessage(name);
       const responseText = await result.response.text();
 
-      return res.status(200).json({ response: responseText });
+      // Prepare and send the response
+      const greeting = `Hello ${name}! >>> ${responseText}`;
+      return res.status(200).json({ greeting });
 
     } catch (error) {
       console.error('Error in handler:', error);
