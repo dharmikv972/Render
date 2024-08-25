@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+      :root {
+
+    --body-font: "Montserrat", sans-serif;
+    --heading-font: "Oswald", sans-serif;
+    }
+   
+       
+   
+:root[data-theme="dark"]  {
+       --primary-100:#4D4D4D;
+    --primary-200:#797979;
+    --primary-300:#d9d9d9;
+    --accent-100:#FF6666;
+    --accent-200:#8f0015;
+    --text-100:#FFFFFF;
+    --text-200:#e0e0e0;
+    --bg-100:#1A1A1A;
+    --bg-200:#292929;
+    --bg-300:#404040;
+      
+}
+
+
+  :root {
+  
+      --primary-100:#00B8A9;
+    --primary-200:#BBDED6;
+    --primary-300:#E0E2E5;
+    --accent-100:#F6416C;
+    --accent-200:#FAE3D9;
+    --text-100:#292524;
+    --text-200:#78716c;
+    --bg-100:#F8F3D4;
+    --bg-200:#ffffff;
+    --bg-300:#FAD9E6;
+      
+      
+--theme-color:var( --accent-200);
+--message-bg-color: var(--bg-100); 
+--title-bg-color: var(--primary-100); 
+--title-text-color: var(--bg-200); 
+--button-color: var(--primary-300);
+--button-bg-color: var(--primary-100); 
+--button-hover-bg-color: var(--primary-300);
+--sent-message-bg-color:var(--primary-200);
+--received-message-bg-color: var(--primary-300);
+--message-color:var(--text-100);
+--input-bg-color: var(--bg-200); 
+--textarea-bg-color: var(--bg-200); 
+--textarea-text-color: var(--text-100); 
+--button-bg-dark-color: var(--primary-100); 
+--button-text-color: var(--text-200);
+}
+
+    body {
+  margin: 0;
+  font-family: var(--body-font);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title-bar {
+  background-color: var(--title-bg-color);
+  color: var(--title-text-color);
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#select{
+    background-color: var(--theme-color);
+  color: transparent;
+  border: none;
+  border-radius: 50px;
+  width: 2vh;
+  cursor: pointer;
+  font-size: 1rem;
+    font-family: var(--body-font);
+  transition: background-color 0.2s ease;
+}
+
+.title-bar button {
+  background-color: var(--button-color);
+  color:var(--button-bg-color);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 0.6rem;
+    font-family: var(--body-font);
+  transition: background-color 0.2s ease;
+}
+
+.title-bar button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.message-area {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;  
+  background-color: var(--message-bg-color);
+  display: flex;
+  flex-direction: column; /* Ensure messages stack vertically */
+    font-family: var(--body-font);
+}
+
+.message {
+color:var(--message-color);
+  margin: 10px 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  max-width: 75%;
+  word-wrap: break-word;
+  white-space: normal; /* Consider changing based on your need */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.message.sent {
+  background-color: var(--sent-message-bg-color);
+  margin-left: auto;
+border-radius: 8px 0 8px 8px; 
+  position: relative;
+}
+
+
+.message.sent::after {
+  content: '';
+  position: absolute;
+  top: 0px/* Adjust as needed */; 
+  right: -10px/* Adjust as needed */; 
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--sent-message-bg-color);   
+  border-bottom: 20px solid transparent; 
+  
+}
+
+
+
+.message.received {
+  background-color: var(--received-message-bg-color);
+  margin-right: auto;
+  border-radius: 0 8px 8px  8px;
+  position: relative;
+}
+
+.message.received::after {
+   content: '';
+  position: absolute;
+  top: 0px/* Adjust as needed */; 
+  left: -10px ; 
+  width: 0;
+  height: 0;
+  border-top: 20px solid var(--received-message-bg-color);
+  border-left: 20px solid transparent;
+}
+.input-area {
+  font-family: var(--body-font);
+  display: flex;
+  align-items: center;
+  padding: 3px 2px;
+  background-color: var(--input-bg-color);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.input-area.hide {
+  transform: translateY(100%);
+}
+
+.input-area textarea {
+  flex: 1;
+  background-color: var(--textarea-bg-color);
+  color: var(--textarea-text-color);
+  border: none;
+  border-radius: 20px;
+  font-size: 17px;
+  padding: 9px 11px;
+  margin-left: 1px;
+  margin-right: 10px;
+  resize: none;}
+  
+  .input-area textarea,.input-area textarea::placeholder{
+        font-family: var(--body-font);
+  }
+
+.input-area textarea:focus {
+  outline: none;
+}
+
+.input-area button {
+  background-color: var(--button-bg-dark-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 20px;
+  padding: 20px 20px;
+  margin-right: 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+    font-family: var(--body-font);
+}
+
+.input-area button svg {
+  fill: var(--button-text-color);
+}
+
+
+
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.toggle-container input {
+  display: none;
+}
+.toggle-slider {
+  width: 60px;
+  height: 30px;
+  background-color: #ddd;
+  position: relative;
+  font-size: 0.7rem;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+}
+.toggle-slider:before {
+  content: "🌙";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+}
+.toggle-slider:after {
+  content: "☀️";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+}
+.toggle-input:checked + .toggle-slider {
+  background-color: #333;
+}
+.toggle-input:checked + .toggle-slider:before {
+  content: "☀️";
+
+  left: calc(100% - 30px);
+}
+.toggle-input:checked + .toggle-slider:after {
+  content: "🌙";
+  right: 5px;
+}
+.toggle-handle {
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+.toggle-input:checked + .toggle-slider .toggle-handle {
+  transform: translateX(30px);
+}
+
+
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
+}
