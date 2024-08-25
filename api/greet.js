@@ -9,7 +9,7 @@ export default function handler(req, res) {
     }
 
 
-    const greeting ="hello" + name;
+    const greeting ="hello " + name;
 
     return res.status(200).json({ greeting });
   } else {
