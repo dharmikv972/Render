@@ -128,7 +128,26 @@ color:var(--message-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
+.message.sent::after {
+      	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  right: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: var(--sent-message-bg-color) transparent transparent transparent;
+  content: '';
+  position: absolute;
+  top: 0px/* Adjust as needed */; 
+  right: -10px/* Adjust as needed */; 
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--sent-message-bg-color);   
+  border-bottom: 20px solid transparent; 
+}
 .message.sent {
   background-color: var(--sent-message-bg-color);
   margin-left: auto;
@@ -148,7 +167,16 @@ border-radius: 8px 0 8px 8px;
   position: relative;
 }
 
-
+.message.received::after {
+   content: '';
+  position: absolute;
+  top: 0px/* Adjust as needed */; 
+  left: -10px ; 
+  width: 0;
+  height: 0;
+  border-top: 20px solid var(--received-message-bg-color);
+  border-left: 20px solid transparent;
+}
 .input-area {
   font-family: var(--body-font);
   display: flex;
