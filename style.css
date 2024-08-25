@@ -120,23 +120,13 @@
 
 .message {
 color:var(--message-color);
-      margin:8px;
+      margin:8px 0;
   padding: 8px 19px;
   border-radius: 8px;
   max-width: 75%;
   white-space: pre-wrap; /* Consider changing based on your need */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-
-.message.sent {
-      z-index:4;
-  background-color: var(--sent-message-bg-color);
-  margin-left: auto;
-border-radius: 8px 0 8px 8px; 
-  position: relative;
-}
-
 
 .message.sent::after {
   content: '';
@@ -148,6 +138,16 @@ border-radius: 8px 0 8px 8px;
   border-left: 20px solid var(--sent-message-bg-color);   
   border-bottom: 20px solid transparent; 
 }
+.message.sent {
+      z-index:4;
+  background-color: var(--sent-message-bg-color);
+  margin-left: auto;
+border-radius: 8px 0 8px 8px; 
+  position: relative;
+}
+
+
+
 
 
 
