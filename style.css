@@ -121,7 +121,7 @@
 .message {
   color: var(--message-color);
   margin: 10px 0;
-  padding: 8px 12px; /* Increased padding for better readability */
+  padding: 10px 12px; /* Increased padding for better readability */
   border-radius: 12px; /* Slightly larger border-radius for a modern look */
   max-width: 80%; /* Adjusted for better fit in various screen sizes */
   background-color: #f9f9f9; /* Added background color for better visibility */
@@ -130,13 +130,7 @@
   display: inline-block; /* Ensure bubbles adjust to content width */
 }
 
-.message.sent {
-  background-color: var(--sent-message-bg-color); /* Different color for sent messages */
-}
 
-.message.received {
-  background-color: var(--received-message-bg-color); /* Different color for received messages */
-}
 
 
 .message.sent {
