@@ -120,8 +120,7 @@
 
 .message {
 color:var(--message-color);
-  margin: 5px 7px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 8px;
   max-width: 75%;
   white-space: pre-wrap; /* Consider changing based on your need */
@@ -146,7 +145,7 @@ border-radius: 8px 0 8px 8px;
   height: 0;
   border-left: 20px solid var(--sent-message-bg-color);   
   border-bottom: 20px solid transparent; 
-  z-index:-1;
+
 }
 
 
