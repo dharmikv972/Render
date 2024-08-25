@@ -9,7 +9,7 @@ export default function handler(req, res) {
     }
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyDEDNIwl3aMAT5l_Q-_SOWlFUyNY-d1UBE");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
     const greeting ="hello";
 
