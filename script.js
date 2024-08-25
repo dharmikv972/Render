@@ -66,19 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderMessages();
   }
 
-  function handleScroll() {
-    const currentScrollPos = window.pageYOffset;
-
-    if (prevScrollpos > currentScrollPos) {
-      inputArea.classList.remove('hide');
-    } else {
-      inputArea.classList.add('hide');
-    }
-    prevScrollpos = currentScrollPos;
-  }
-
-  let prevScrollpos = window.pageYOffset;
-
+  
   sendButton.addEventListener('click', sendMessage);
   inputField.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
