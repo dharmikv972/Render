@@ -2,33 +2,7 @@
 
 
 
- const safetySettings = [
-      {
-        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-    ];
-
-    const instructions = `Imagine you're a helpful but impatient older brother...`;
-
-    import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "https://esm.run/@google/generative-ai";
-
-    const genAI = new GoogleGenerativeAI("AIzaSyBwa_QW5ejTYfjRNLbAF9Lk9eG5s-rYaqU");
-    let model;
-    let chat;
-
+ 
   
 const inputArea = document.querySelector('.input-area');
     const inputField = document.getElementById('input-field');
@@ -92,15 +66,4 @@ const inputArea = document.querySelector('.input-area');
       messages.length = 0;
       renderMessages();
     });
-   let prevScrollpos = window.pageYOffset;
-
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
-
-      if (prevScrollpos > currentScrollPos) {
-        inputArea.classList.remove('hide');
-      } else {
-        inputArea.classList.add('hide');
-      }
-      prevScrollpos = currentScrollPos;
-    }
+   
