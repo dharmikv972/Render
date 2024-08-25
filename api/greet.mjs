@@ -68,11 +68,10 @@ export default async function handler(req, res) {
 
       // Send a message to the chat session
       const result = await chatSession.sendMessage(name);
-      const responseText = await result.response.text();
+    
 
-      // Prepare and send the response
-      const greeting = `Hello ${name}! >>> ${responseText}`;
-      return res.status(200).json({ greeting });
+    
+      return res.status(200).json(result);
 
     } catch (error) {
       console.error('Error in handler:', error);
