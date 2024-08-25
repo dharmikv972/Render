@@ -42,7 +42,7 @@ const inputArea = document.querySelector('.input-area');
      
            const result = await response.json();
        console.log(result.greeting);
-        messages.push({ type: 'received', content: result.grreting });
+        messages.push({ type: 'received', content: result.greeting });
         renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
       } catch (error) {
