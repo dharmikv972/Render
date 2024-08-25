@@ -121,7 +121,7 @@
 .message {
 color:var(--message-color);
   margin: 5px 7px;
-  padding: 36px 30px;
+  padding: 10px 20px;
   border-radius: 8px;
   max-width: 75%;
   white-space: pre-wrap; /* Consider changing based on your need */
