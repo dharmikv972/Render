@@ -64,7 +64,7 @@ const inputArea = document.querySelector('.input-area');
       renderMessages();
 
       try {
- const responseText =  = await fetch('/api/greet', {
+ const responseText = await fetch('/api/greet', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
