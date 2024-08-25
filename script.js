@@ -1,10 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const inputArea = document.querySelector('.input-area');
+document.addEventListener('DOMContentLoaded', () => {
   const inputField = document.getElementById('input-field');
   const sendButton = document.getElementById('send-button');
   const messageArea = document.getElementById('message-area');
   const clearChatButton = document.getElementById('clear-chat');
-renderMessages();
+
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
   function createMessageElement(type, content) {
@@ -15,23 +14,23 @@ renderMessages();
   }
 
   function renderMessages() {
-    messageArea.innerHTML = '';
+    // Use DocumentFragment for efficient DOM manipulation
+    const fragment = document.createDocumentFragment();
     messages.forEach(({ type, content }) => {
-      const messageDiv = createMessageElement(type, content);
-      messageArea.appendChild(messageDiv);
+      fragment.appendChild(createMessageElement(type, content));
     });
+    messageArea.innerHTML = ''; // Clear existing messages
+    messageArea.appendChild(fragment); // Append new messages
 
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
+    // Smooth scroll to the bottom of the message area
+    messageArea.scrollTop = messageArea.scrollHeight;
   }
 
   async function sendMessage() {
     const userInput = inputField.value.trim();
     if (!userInput) return;
 
-    inputField.value = '';
+    inputField.value = ''; // Clear input field
     messages.push({ type: 'sent', content: userInput });
     renderMessages();
 
@@ -47,16 +46,14 @@ renderMessages();
       if (response.ok) {
         const result = await response.json();
         messages.push({ type: 'received', content: result.greeting });
-        renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
       } else {
-        messages.push({ type: 'error', content: 'Failed to get a response' });
-        renderMessages();
+        throw new Error('Failed to get a response');
       }
     } catch (error) {
-      messages.push({ type: 'error', content: 'An error occurred' });
+      messages.push({ type: 'error', content: `Error: ${error.message}` });
+    } finally {
       renderMessages();
-      console.error("Error sending message:", error);
     }
   }
 
@@ -66,7 +63,6 @@ renderMessages();
     renderMessages();
   }
 
-  
   sendButton.addEventListener('click', sendMessage);
   inputField.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -76,7 +72,6 @@ renderMessages();
   });
 
   clearChatButton.addEventListener('click', clearChatHistory);
-  window.addEventListener('scroll', handleScroll);
 
   // Render messages on page load
   renderMessages();
