@@ -1,7 +1,5 @@
-// utils.js
-
-// Example external function: Generates a random greeting
-function getRandomGreeting(name) {
+// Define and export the function using ES modules
+export function getRandomGreeting(name) {
   const greetings = [
     `Hello, ${name}! How are you today?`,
     `Hi, ${name}! Nice to see you!`,
@@ -9,7 +7,3 @@ function getRandomGreeting(name) {
   ];
   return greetings[Math.floor(Math.random() * greetings.length)];
 }
-
-module.exports = {
-  getRandomGreeting,
-};
