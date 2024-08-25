@@ -64,13 +64,15 @@ const inputArea = document.querySelector('.input-area');
       renderMessages();
 
       try {
- const responseText = await fetch('/api/greet', {
+ const result = await fetch('/api/greet', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ userInput }),
         });
+  const responseText = marked.parse(await result.response.text());
+       console.log(result);
         messages.push({ type: 'received', content: responseText });
         renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
