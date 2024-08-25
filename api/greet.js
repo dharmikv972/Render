@@ -9,7 +9,14 @@ export default function handler(req, res) {
       return res.status(400).json({ error: 'Name is required and must be a string' });
     }
 
-    // Use the external function to generate a greeting
+    getRandomGreeting(name) {
+  const greetings = [
+    `Hello, ${name}! How are you today?`,
+    `Hi, ${name}! Nice to see you!`,
+    `Hey, ${name}! Hope you're having a great day!`,
+  ];
+  return greetings[Math.floor(Math.random() * greetings.length)];
+}
     const greeting = getRandomGreeting(name);
 
     return res.status(200).json({ greeting });
