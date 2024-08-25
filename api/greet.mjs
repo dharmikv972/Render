@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold  } from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -8,22 +8,31 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Name is required and must be a string' });
     }
 
-    // Example usage of Google Generative AI (if needed)
-    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+    // Initialize Google Generative AI client
+    const genAI = new GoogleGenerativeAI("AIzaSyDEDNIwl3aMAT5l_Q-_SOWlFUyNY-d1UBE");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Uncomment and adjust if you need to use safety settings and make actual AI requests
-     const safetySettings = [
+    const safetySettings = [
       {
         category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    /   threshold: HarmBlockThreshold.BLOCK_NONE,
-     },
-    //   // Add other safety settings as needed
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
     ];
 
-
-    // Respond with a simple greeting for now
-    const greeting = `Hello, ${name}!`;
+    const instructions = `Imagine you're a helpful but impatient older brother...`;
+    const greeting = "Hello " + name;
 
     return res.status(200).json({ greeting });
   } else {
