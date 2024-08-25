@@ -1,5 +1,5 @@
-// Import external function from utils
-const { getRandomGreeting } = require('../utils');
+// Import the function using ES modules
+import { getRandomGreeting } from '../utils';
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
