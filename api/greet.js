@@ -8,7 +8,9 @@ export default function handler(req, res) {
       return res.status(400).json({ error: 'Name is required and must be a string' });
     }
 
-
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
     const greeting ="hello";
 
     return res.status(200).json({ greeting });
