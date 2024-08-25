@@ -64,7 +64,7 @@ const inputArea = document.querySelector('.input-area');
       renderMessages();
 
       try {
- const result = await fetch('/api/greet', {
+ const responseText =  = await fetch('/api/greet', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const inputArea = document.querySelector('.input-area');
           const error = await response.text();
           document.getElementById('greeting').innerText = `Error: ${error}`;
         }
- const responseText = marked.parse(await result.response.text());
+
 
 
         messages.push({ type: 'received', content: responseText });
