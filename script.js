@@ -1,35 +1,3 @@
-
-
-
-
- const safetySettings = [
-      {
-        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-      {
-        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-        threshold: HarmBlockThreshold.BLOCK_NONE,
-      },
-    ];
-
-    const instructions = `Imagine you're a helpful but impatient older brother...`;
-
-    import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "https://esm.run/@google/generative-ai";
-
-    const genAI = new GoogleGenerativeAI("AIzaSyBwa_QW5ejTYfjRNLbAF9Lk9eG5s-rYaqU");
-    let model;
-    let chat;
-
-  
 const inputArea = document.querySelector('.input-area');
     const inputField = document.getElementById('input-field');
     const sendButton = document.getElementById('send-button');
@@ -62,7 +30,7 @@ const inputArea = document.querySelector('.input-area');
       inputField.value = '';
       messages.push({ type: 'sent', content: userInput });
       renderMessages();
-
+  console.log(userInput);
       try {
  const result = await fetch('/api/greet', {
           method: 'POST',
@@ -71,6 +39,7 @@ const inputArea = document.querySelector('.input-area');
           },
           body: JSON.stringify({ userInput }),
         });
+         console.log(result);
   const responseText = result.greeting;
        console.log(responseText);
         messages.push({ type: 'received', content: responseText });
