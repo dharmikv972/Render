@@ -29,38 +29,7 @@
     let model;
     let chat;
 
-    async function startChat() {
-      try {
-        model = genAI.getGenerativeModel({
-          model: "gemini-1.5-flash",
-          generationConfig: {
-            temperature: 0.7,
-            topP: 0.95,
-            topK: 64,
-            maxOutputTokens: 80,
-            responseMimeType: "text/plain",
-          },
-          systemInstruction: instructions,
-          safetySettings,
-        });
-        chat = await model.startChat({
-          history: [
-            {
-              role: "user",
-              parts: [{ text: "Hello" }],
-            },
-            {
-              role: "model",
-              parts: [{ text: "Great to meet you. What would you like to know?" }],
-            },
-          ],
-        });
-      } catch (error) {
-        console.error("Error starting chat:", error);
-      }
-    }
-
-    startChat();
+  
 const inputArea = document.querySelector('.input-area');
     const inputField = document.getElementById('input-field');
     const sendButton = document.getElementById('send-button');
@@ -95,8 +64,24 @@ const inputArea = document.querySelector('.input-area');
       renderMessages();
 
       try {
-        const result = await chat.sendMessage(userInput);
-        const responseText = marked.parse(await result.response.text());
+ const result = await fetch('/api/greet', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userInput }),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          document.getElementById('greeting').innerText = result.greeting;
+        } else {
+          const error = await response.text();
+          document.getElementById('greeting').innerText = `Error: ${error}`;
+        }
+ const responseText = marked.parse(await result.response.text());
+
+
         messages.push({ type: 'received', content: responseText });
         renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
