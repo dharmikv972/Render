@@ -67,7 +67,7 @@ export default async function handler(req, res) {
       const responseText = await result.response.text();
 
       // Prepare and send the response
-      const greeting = `Hello ${name}! >>> ${responseText}`;
+      const greeting = responseText;
       return res.status(200).json({ greeting });
 
     } catch (error) {
