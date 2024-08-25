@@ -121,15 +121,13 @@
 .message {
   color: var(--message-color);
   margin: 10px 0;
-  padding: 8px 12px; /* Slightly increased padding for a more balanced look */
-  border-radius: 12px; /* More rounded corners for a modern design */
-  max-width: 75%;
-  overflow-wrap: break-word; /* Ensure long words are broken properly */
-  word-break: break-word; /* Further ensure proper word breaking */
-  background-color: var(--message-bg-color); /* Add a background color for better contrast */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer, more professional shadow */
-  text-align: left; /* Align text to the left */
-  display: inline-block; /* Ensure bubbles are only as wide as their content */
+  padding: 8px 12px; /* Increased padding for better readability */
+  border-radius: 12px; /* Slightly larger border-radius for a modern look */
+  max-width: 80%; /* Adjusted for better fit in various screen sizes */
+  background-color: #f9f9f9; /* Added background color for better visibility */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  text-align: left; /* Align text to the left for better readability */
+  display: inline-block; /* Ensure bubbles adjust to content width */
 }
 
 .message.sent {
