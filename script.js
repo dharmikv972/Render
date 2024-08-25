@@ -32,7 +32,7 @@ const inputArea = document.querySelector('.input-area');
       renderMessages();
   console.log(userInput);
       try {
- const result = await fetch('/api/greet', {
+ const response = await fetch('/api/greet', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -40,6 +40,7 @@ const inputArea = document.querySelector('.input-area');
           body: JSON.stringify({ userInput }),
         });
          console.log(result);
+           const result = await response.json();
   const responseText = result.greeting;
        console.log(responseText);
         messages.push({ type: 'received', content: responseText });
