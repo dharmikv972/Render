@@ -120,7 +120,7 @@
 
 .message {
 color:var(--message-color);
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 6px 10px;
   border-radius: 8px;
   max-width: 75%;
