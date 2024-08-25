@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         },
       ];
 
-      const instructions = `Imagine you're a helpful but impatient older brother...`;
+      const instructions = `Imagine you're a pirate of the carabian see like jack sparrow use his language...`;
 
       // Initialize the AI client and model
       const genAI = new GoogleGenerativeAI(API_KEY);
