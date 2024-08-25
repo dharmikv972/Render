@@ -71,8 +71,8 @@ const inputArea = document.querySelector('.input-area');
           },
           body: JSON.stringify({ userInput }),
         });
-  const responseText = marked.parse(await result.response.text());
-       console.log(result);
+  const responseText = result.greeting;
+       console.log(responseText);
         messages.push({ type: 'received', content: responseText });
         renderMessages();
         localStorage.setItem('chatHistory', JSON.stringify(messages));
