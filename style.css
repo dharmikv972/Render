@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -7,7 +8,9 @@
     --body-font: "Montserrat", sans-serif;
     --heading-font: "Oswald", sans-serif;
     }
-   
+   </style>
+    <link href="/prism.css" rel="stylesheet" />
+   <style>
        
    
 :root[data-theme="dark"]  {
@@ -120,34 +123,16 @@
 
 .message {
 color:var(--message-color);
-      margin:8px 0;
-  padding: 8px 19px;
+  margin: 10px 0;
+   padding: 18px;
   border-radius: 8px;
   max-width: 75%;
-  white-space: pre-wrap; /* Consider changing based on your need */
+  word-wrap: break-word;
+  white-space: normal; /* Consider changing based on your need */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.message.sent::after {
-      	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  right: -20px;
-	right: auto;
-  top: 0px;
-	bottom: auto;
-	border: 22px solid;
-	border-color: var(--sent-message-bg-color) transparent transparent transparent;
-  content: '';
-  position: absolute;
-  top: 0px/* Adjust as needed */; 
-  right: -10px/* Adjust as needed */; 
-  width: 0;
-  height: 0;
-  border-left: 20px solid var(--sent-message-bg-color);   
-  border-bottom: 20px solid transparent; 
-}
+
 .message.sent {
   background-color: var(--sent-message-bg-color);
   margin-left: auto;
@@ -156,7 +141,17 @@ border-radius: 8px 0 8px 8px;
 }
 
 
-
+.message.sent::after {
+  content: '';
+  position: absolute;
+  top: 0px/* Adjust as needed */; 
+  right: -10px/* Adjust as needed */; 
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--sent-message-bg-color);   
+  border-bottom: 20px solid transparent; 
+  
+}
 
 
 
@@ -183,9 +178,10 @@ border-radius: 8px 0 8px 8px;
   align-items: center;
   padding: 3px 2px;
   background-color: var(--input-bg-color);
-  position: sticky;
+  position: relative;
   bottom: 0;
   width: 100%;
+
   transition: transform 0.3s ease;
 }
 
@@ -292,6 +288,43 @@ border-radius: 8px 0 8px 8px;
   transform: translateX(30px);
 }
 
+/* Code Block Styling */
+pre {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  
+  color: #f8f8f2;
+  border: 1px solid #3c3c3c;
+  border-radius: 5px;
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+
+pre > code {
+ 
+  
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+/* Adjust message area for better scrolling and appearance */
+.message-area {
+font-size: 12px; /* Adjust the font size as needed */
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  background-color: 
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--body-font);
+}
+
+/* Add scrollbar styling */
 
 @media (max-width: 768px) {
   .message {
