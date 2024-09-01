@@ -6,28 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
-  function createMessageElement(type, content) {
+  function renderMessages() {
+  messageArea.innerHTML = '';
+  messages.forEach(({ type, content }) => {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', type);
-    messageDiv.innerHTML = content
-  .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>')
-  .replace(/`([^`]+)`/g, '<code>$1</code>'); // Formatted display
-    return messageDiv;
+
+    // Format content with Markdown and code blocks
+    const formattedContent = content
+      .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>') // Fenced code blocks
+      .replace(/`([^`]+)`/g, '<code>$1</code>'); // Inline code
+
+    messageDiv.innerHTML = formattedContent;
+    messageArea.appendChild(messageDiv);
+  });
+
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  });
   }
-
-  function renderMessages() {
-    // Use DocumentFragment for efficient DOM manipulation
-    const fragment = document.createDocumentFragment();
-    messages.forEach(({ type, content }) => {
-      fragment.appendChild(createMessageElement(type, content));
-    });
-    messageArea.innerHTML = ''; // Clear existing messages
-    messageArea.appendChild(fragment); // Append new messages
-
-    // Smooth scroll to the bottom of the message area
-    messageArea.scrollTop = messageArea.scrollHeight;
-  }
-
   async function sendMessage() {
     const userInput = inputField.value.trim();
     if (!userInput) return;
