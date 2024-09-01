@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function createMessageElement(type, content) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', type);
-    messageDiv.textContent = content;
+    messageDiv.innerHTML = content
+  .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>')
+  .replace(/`([^`]+)`/g, '<code>$1</code>'); // Formatted display
     return messageDiv;
   }
 
