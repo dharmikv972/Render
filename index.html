@@ -493,7 +493,7 @@ font-size: 12px; /* Adjust the font size as needed */
 
     try {
       const result = await chat.sendMessage(userInput);
-      const responseText = marked.parse(await result.response.text());
+      const responseText = await result.response.text();
       messages.push({ type: 'received', content: responseText });
       renderMessages();
      console.log(responseText);
