@@ -1,4 +1,4 @@
-
+ <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -8,10 +8,7 @@
     --body-font: "Montserrat", sans-serif;
     --heading-font: "Oswald", sans-serif;
     }
-   </style>
-    <link href="/prism.css" rel="stylesheet" />
-   <style>
-       
+  
    
 :root[data-theme="dark"]  {
        --primary-100:#4D4D4D;
@@ -66,162 +63,6 @@
   flex-direction: column;
   min-height: 100vh;
   
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.title-bar {
-  background-color: var(--title-bg-color);
-  color: var(--title-text-color);
-  padding: 11px 16px;
-  text-align: left;
-  font-size: 1.4rem;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#select{
-    background-color: var(--theme-color);
-  color: transparent;
-  border: none;
-  border-radius: 50px;
-  width: 2vh;
-  cursor: pointer;
-  font-size: 1rem;
-    font-family: var(--body-font);
-  transition: background-color 0.2s ease;
-}
-
-.title-bar button {
-  background-color: var(--button-color);
-  color:var(--button-bg-color);
-  border: none;
-  border-radius: 5px;
-  padding: 7px 14px;
-  cursor: pointer;
-  font-size: 0.6rem;
-    font-family: var(--body-font);
-  transition: background-color 0.2s ease;
-}
-
-.title-bar button:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
-.message-area {
-  flex: 1;
-  padding: 18px;
-  overflow-y: auto;  
-  background-color: var(--message-bg-color);
-  display: flex;
-  flex-direction: column; /* Ensure messages stack vertically */
-    font-family: var(--body-font);
-}
-
-.message {
-color:var(--message-color);
-  margin: 10px 0;
-   padding: 18px;
-  border-radius: 8px;
-  max-width: 75%;
-  word-wrap: break-word;
-  white-space: normal; /* Consider changing based on your need */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-
-.message.sent {
-  background-color: var(--sent-message-bg-color);
-  margin-left: auto;
-border-radius: 8px 0 8px 8px; 
-  position: relative;
-}
-
-
-.message.sent::after {
-  content: '';
-  position: absolute;
-  top: 0px/* Adjust as needed */; 
-  right: -10px/* Adjust as needed */; 
-  width: 0;
-  height: 0;
-  border-left: 20px solid var(--sent-message-bg-color);   
-  border-bottom: 20px solid transparent; 
-  
-}
-
-
-
-.message.received {
-  background-color: var(--received-message-bg-color);
-  margin-right: auto;
-  border-radius: 0 8px 8px  8px;
-  position: relative;
-}
-
-.message.received::after {
-   content: '';
-  position: absolute;
-  top: 0px/* Adjust as needed */; 
-  left: -10px ; 
-  width: 0;
-  height: 0;
-  border-top: 20px solid var(--received-message-bg-color);
-  border-left: 20px solid transparent;
-}
-.input-area {
-  font-family: var(--body-font);
-  display: flex;
-  align-items: center;
-  padding: 3px 2px;
-  background-color: var(--input-bg-color);
-  position: relative;
-  bottom: 0;
-  width: 100%;
-
-  transition: transform 0.3s ease;
-}
-
-.input-area.hide {
-  transform: translateY(100%);
-}
-
-.input-area textarea {
-  flex: 1;
-  background-color: var(--textarea-bg-color);
-  color: var(--textarea-text-color);
-  border: none;
-  border-radius: 20px;
-  font-size: 17px;
-  padding: 9px 11px;
-  margin-left: 1px;
-  margin-right: 10px;
-  resize: none;}
-  
-  .input-area textarea,.input-area textarea::placeholder{
-        font-family: var(--body-font);
-  }
-
-.input-area textarea:focus {
-  outline: none;
-}
-
-.input-area button {
-  background-color: var(--button-bg-dark-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 20px;
-  padding: 20px 20px;
-  margin-right: 16px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-    font-family: var(--body-font);
-}
-
 .input-area button svg {
   fill: var(--button-text-color);
 }
@@ -331,3 +172,4 @@ font-size: 12px; /* Adjust the font size as needed */
     max-width: 90%;
   }
 }
+  
