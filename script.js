@@ -6,12 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
-  function escapeHtml(unsafe) {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
   function renderMessages() {
     messageArea.innerHTML = '';
     messages.forEach(({ type, content }) => {
@@ -43,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMessages();
 
   try {
-    const Response = await fetch('/api/greet', {
+    const response = await fetch('/api/greet', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (response.ok) {
-      const responseText = marked.parse(await Response.result.response.text());
-      messages.push({ type: 'received', content: responseText });
-      renderMessages();
-     console.log(responseText);
-     localStorage.setItem('chatHistory', JSON.stringify(messages));
+      const result = await response.json();
+      // Use `marked` to parse and structure the response text
+      const formattedResponse = marked.parse(result.greeting);
+      messages.push({ type: 'received', content: formattedResponse });
+      localStorage.setItem('chatHistory', JSON.stringify(messages));
     } else {
       throw new Error('Failed to get a response');
     }
@@ -69,12 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function clearChatHistory() {
     localStorage.removeItem('chatHistory');
-     messages.length = 0;
+    messages = [];
     renderMessages();
   }
 
   sendButton.addEventListener('click', sendMessage);
-
+  inputField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 
   clearChatButton.addEventListener('click', clearChatHistory);
 
