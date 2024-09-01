@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chat Screen</title>
+  <title>Chat with AI</title>
   <style>
+ 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -13,12 +14,7 @@
     --body-font: "Montserrat", sans-serif;
     --heading-font: "Oswald", sans-serif;
     }
-   </style>
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-   <style>
-       
+  
    
 :root[data-theme="dark"]  {
        --primary-100:#4D4D4D;
@@ -73,162 +69,6 @@
   flex-direction: column;
   min-height: 100vh;
   
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.title-bar {
-  background-color: var(--title-bg-color);
-  color: var(--title-text-color);
-  padding: 11px 16px;
-  text-align: left;
-  font-size: 1.4rem;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#select{
-    background-color: var(--theme-color);
-  color: transparent;
-  border: none;
-  border-radius: 50px;
-  width: 2vh;
-  cursor: pointer;
-  font-size: 1rem;
-    font-family: var(--body-font);
-  transition: background-color 0.2s ease;
-}
-
-.title-bar button {
-  background-color: var(--button-color);
-  color:var(--button-bg-color);
-  border: none;
-  border-radius: 5px;
-  padding: 7px 14px;
-  cursor: pointer;
-  font-size: 0.6rem;
-    font-family: var(--body-font);
-  transition: background-color 0.2s ease;
-}
-
-.title-bar button:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
-.message-area {
-  flex: 1;
-  padding: 18px;
-  overflow-y: auto;  
-  background-color: var(--message-bg-color);
-  display: flex;
-  flex-direction: column; /* Ensure messages stack vertically */
-    font-family: var(--body-font);
-}
-
-.message {
-color:var(--message-color);
-  margin: 10px 0;
-   padding: 18px;
-  border-radius: 8px;
-  max-width: 75%;
-  word-wrap: break-word;
-  white-space: normal; /* Consider changing based on your need */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-
-.message.sent {
-  background-color: var(--sent-message-bg-color);
-  margin-left: auto;
-border-radius: 8px 0 8px 8px; 
-  position: relative;
-}
-
-
-.message.sent::after {
-  content: '';
-  position: absolute;
-  top: 0px/* Adjust as needed */; 
-  right: -10px/* Adjust as needed */; 
-  width: 0;
-  height: 0;
-  border-left: 20px solid var(--sent-message-bg-color);   
-  border-bottom: 20px solid transparent; 
-  
-}
-
-
-
-.message.received {
-  background-color: var(--received-message-bg-color);
-  margin-right: auto;
-  border-radius: 0 8px 8px  8px;
-  position: relative;
-}
-
-.message.received::after {
-   content: '';
-  position: absolute;
-  top: 0px/* Adjust as needed */; 
-  left: -10px ; 
-  width: 0;
-  height: 0;
-  border-top: 20px solid var(--received-message-bg-color);
-  border-left: 20px solid transparent;
-}
-.input-area {
-  font-family: var(--body-font);
-  display: flex;
-  align-items: center;
-  padding: 3px 2px;
-  background-color: var(--input-bg-color);
-  position: relative;
-  bottom: 0;
-  width: 100%;
-
-  transition: transform 0.3s ease;
-}
-
-.input-area.hide {
-  transform: translateY(100%);
-}
-
-.input-area textarea {
-  flex: 1;
-  background-color: var(--textarea-bg-color);
-  color: var(--textarea-text-color);
-  border: none;
-  border-radius: 20px;
-  font-size: 17px;
-  padding: 9px 11px;
-  margin-left: 1px;
-  margin-right: 10px;
-  resize: none;}
-  
-  .input-area textarea,.input-area textarea::placeholder{
-        font-family: var(--body-font);
-  }
-
-.input-area textarea:focus {
-  outline: none;
-}
-
-.input-area button {
-  background-color: var(--button-bg-dark-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 20px;
-  padding: 20px 20px;
-  margin-right: 16px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-    font-family: var(--body-font);
-}
-
 .input-area button svg {
   fill: var(--button-text-color);
 }
@@ -338,7 +178,9 @@ font-size: 12px; /* Adjust the font size as needed */
     max-width: 90%;
   }
 }
+  
   </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet" />
 </head>
 <body>
   <div class="title-bar">
@@ -356,173 +198,155 @@ font-size: 12px; /* Adjust the font size as needed */
     <textarea id="input-field" placeholder="Type a message..."></textarea>
     <button id="send-button">Send</button>
   </div>
-   <script>        const checkbox = document.querySelector('.toggle-input');
-        const body = document.documentElement;
 
-        // Check initial theme from local storage
-        if (localStorage.getItem('theme') === 'dark') {
-            checkbox.checked = true;
-            body.setAttribute('data-theme', 'dark');
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 
-        checkbox.addEventListener('change', () => {
-            if (checkbox.checked) {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    </script>       
+  <script>
+    const checkbox = document.querySelector('.toggle-input');
+    const body = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      checkbox.checked = true;
+      body.setAttribute('data-theme', 'dark');
+    }
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>       
   <script type="importmap">
-  {
-    "imports": {
-      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
     }
-  }
-</script>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script type="module">
-  const API_KEY =    "AIzaSyBwa_QW5ejTYfjRNLbAF9Lk9eG5s-rYaqU";
-  const safetySettings = [
-    {
-      category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-      threshold: HarmBlockThreshold.BLOCK_NONE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-      threshold: HarmBlockThreshold.BLOCK_NONE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-      threshold: HarmBlockThreshold.BLOCK_NONE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-      threshold: HarmBlockThreshold.BLOCK_NONE,
-    },
-  ];
 
-  const instructions = `Imagine you're a coding helper in a user friendly gujrati language . tu bas coding mate help karvano che. baki nu koi reply khali 'hmm' karine api devano che ane jo koi coding ke error related text hoy to tene point wise details ma explaination and solution gujrati ma apvanu rahese . comment pn gujrati ma j apvana che ,user bhale game te language use kare pn tu only gujrati language j vapris with English fonts `;
+  <script type="module">
+    const API_KEY = "YOUR_API_KEY"; 
+    const safetySettings = [
+      { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+    ];
 
-  import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+    const instructions = `Imagine you're a coding helper in a user friendly gujrati language . tu bas coding mate help karvano che. baki nu koi reply khali 'hmm' karine api devano che ane jo koi coding ke error related text hoy to tene point wise details ma explaination and solution gujrati ma apvanu rahese . comment pn gujrati ma j apvana che ,user bhale game te language use kare pn tu only gujrati language j vapris with English fonts `;
 
-  const genAI = new GoogleGenerativeAI(API_KEY);
-  let model;
-  let chat;
+    import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
-  async function startChat() {
-    try {
-      model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash",
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.95,
-          topK: 64,
-          maxOutputTokens: 8000,
-          responseMimeType: "text/plain",
-        },
-        systemInstruction: instructions,
-        safetySettings,
-      });
-      chat = await model.startChat({
-        history: [
-          {
-            role: "user",
-            parts: [{ text: "Hello" }],
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    let model;
+    let chat;
+
+    async function startChat() {
+      try {
+        model = genAI.getGenerativeModel({
+          model: "gemini-1.5-flash",
+          generationConfig: {
+            temperature: 0.7,
+            topP: 0.95,
+            topK: 64,
+            maxOutputTokens: 8000,
+            responseMimeType: "text/plain",
           },
-          {
-            role: "model",
-            parts: [{ text: "Great to meet you. What would you like to know?" }],
-          },
-        ],
-      });
-    } catch (error) {
-      console.error("Error starting chat:", error);
+          systemInstruction: instructions,
+          safetySettings,
+        });
+        chat = await model.startChat({
+          history: [
+            { role: "user", parts: [{ text: "Hello" }] },
+            { role: "model", parts: [{ text: "Great to meet you. What would you like to know?" }] },
+          ],
+        });
+      } catch (error) {
+        console.error("Error starting chat:", error);
+      }
     }
-  }
 
-  startChat();
-  const inputArea = document.querySelector('.input-area');
-  const inputField = document.getElementById('input-field');
-  const sendButton = document.getElementById('send-button');
-  const messageArea = document.getElementById('message-area');
-  const clearChatButton = document.getElementById('clear-chat');
+    startChat();
+    
+    const inputArea = document.querySelector('.input-area');
+    const inputField = document.getElementById('input-field');
+    const sendButton = document.getElementById('send-button');
+    const messageArea = document.getElementById('message-area');
+    const clearChatButton = document.getElementById('clear-chat');
 
-  const messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    const messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    let loading = false; 
 
-  function escapeHtml(unsafe) {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">");
+    }
 
-  function renderMessages() {
-    messageArea.innerHTML = '';
-    messages.forEach(({ type, content }) => {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message', type);
+    function renderMessages() {
+      messageArea.innerHTML = ''; 
+      messages.forEach(({ type, content }) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', type);
 
-      // Format content with Markdown and code blocks
-      const formattedContent = content
-        .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>') // Fenced code blocks
-        .replace(/`([^`]+)`/g, '<code>$1</code>'); // Inline code
+        const formattedContent = content
+          .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>')
+          .replace(/`([^`]+)`/g, '<code>$1</code>'); 
 
-      messageDiv.innerHTML = formattedContent;
-      messageArea.appendChild(messageDiv);
-    });
+        messageDiv.innerHTML = formattedContent;
+        messageArea.appendChild(messageDiv);
+      });
 
-    // Smooth scroll to the bottom of the message area
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
-  }
+      messageArea.scrollTop = messageArea.scrollHeight; 
+    }
 
-  renderMessages();
-
-  async function sendMessage() {
-    const userInput = inputField.value.trim();
-    if (!userInput) return;
-
-    inputField.value = '';
-    messages.push({ type: 'sent', content: userInput });
     renderMessages();
 
-    try {
-      const result = await chat.sendMessage(userInput);
-      const responseText = await result.response.text();
-      messages.push({ type: 'received', content: responseText });
+    async function sendMessage() {
+      const userInput = inputField.value.trim();
+      if (!userInput || loading) return; 
+
+      inputField.value = '';
+      messages.push({ type: 'sent', content: userInput });
       renderMessages();
-     console.log(responseText);
-     localStorage.setItem('chatHistory', JSON.stringify(messages));
-    } catch (error) {
-      console.error("Error sending message:", error);
+
+      loading = true; 
+      sendButton.disabled = true; 
+
+      try {
+        const result = await chat.sendMessage(userInput);
+        const responseText = await result.response.text();
+        messages.push({ type: 'received', content: responseText });
+        renderMessages();
+        localStorage.setItem('chatHistory', JSON.stringify(messages));
+      } catch (error) {
+        console.error("Error sending message:", error);
+      } finally {
+        loading = false; 
+        sendButton.disabled = false; 
+      }
     }
-  }
 
-  sendButton.addEventListener('click', sendMessage);
-  inputField.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
+    sendButton.addEventListener('click', sendMessage);
+    inputField.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
 
-  clearChatButton.addEventListener('click', () => {
-    localStorage.removeItem('chatHistory');
-    messages.length = 0;
-    renderMessages();
-  });
-</script>
-
-
+    clearChatButton.addEventListener('click', () => {
+      localStorage.removeItem('chatHistory');
+      messages.length = 0;
+      renderMessages();
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
