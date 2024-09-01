@@ -6,13 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
-  function escapeHtml(unsafe) {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-
   function renderMessages() {
     messageArea.innerHTML = '';
     messages.forEach(({ type, content }) => {
@@ -28,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       messageArea.appendChild(messageDiv);
     });
 
+    // Smooth scroll to the bottom of the message area
     window.scrollTo({
       top: document.body.scrollHeight,
       behavior: 'smooth'
