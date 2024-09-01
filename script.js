@@ -29,35 +29,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function sendMessage() {
-    const userInput = inputField.value.trim();
-    if (!userInput) return;
+  const userInput = inputField.value.trim();
+  if (!userInput) return;
 
-    inputField.value = ''; // Clear input field
-    messages.push({ type: 'sent', content: userInput });
-    renderMessages();
+  inputField.value = ''; // Clear input field
+  messages.push({ type: 'sent', content: userInput });
+  renderMessages();
 
-    try {
-      const response = await fetch('/api/greet', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: userInput }),
-      });
+  try {
+    const response = await fetch('/api/greet', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: userInput }),
+    });
 
-      if (response.ok) {
-        const result = await response.json();
-        messages.push({ type: 'received', content: result.greeting });
-        localStorage.setItem('chatHistory', JSON.stringify(messages));
-      } else {
-        throw new Error('Failed to get a response');
-      }
-    } catch (error) {
-      messages.push({ type: 'error', content: `Error: ${error.message}` });
-    } finally {
-      renderMessages();
+    if (response.ok) {
+      const result = await response.json();
+      // Use `marked` to parse and structure the response text
+      const formattedResponse = marked.parse(result.greeting);
+      messages.push({ type: 'received', content: formattedResponse });
+      localStorage.setItem('chatHistory', JSON.stringify(messages));
+    } else {
+      throw new Error('Failed to get a response');
     }
+  } catch (error) {
+    messages.push({ type: 'error', content: `Error: ${error.message}` });
+  } finally {
+    renderMessages();
   }
+}
 
   function clearChatHistory() {
     localStorage.removeItem('chatHistory');
