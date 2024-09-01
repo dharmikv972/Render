@@ -6,26 +6,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
-  function renderMessages() {
-  messageArea.innerHTML = '';
-  messages.forEach(({ type, content }) => {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', type);
-
-    // Format content with Markdown and code blocks
-    const formattedContent = content
-      .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>') // Fenced code blocks
-      .replace(/`([^`]+)`/g, '<code>$1</code>'); // Inline code
-
-    messageDiv.innerHTML = formattedContent;
-    messageArea.appendChild(messageDiv);
-  });
-
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth'
-  });
+  function escapeHtml(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
+
+  function renderMessages() {
+    messageArea.innerHTML = '';
+    messages.forEach(({ type, content }) => {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', type);
+
+      // Format content with Markdown and code blocks
+      const formattedContent = content
+        .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>') // Fenced code blocks
+        .replace(/`([^`]+)`/g, '<code>$1</code>'); // Inline code
+
+      messageDiv.innerHTML = formattedContent;
+      messageArea.appendChild(messageDiv);
+    });
+
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
   async function sendMessage() {
     const userInput = inputField.value.trim();
     if (!userInput) return;
