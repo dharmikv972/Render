@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" theme="light">
+<head>
+    <meta charset="UTF-8">
+  <!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Welcome to InsightHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+       /* Global Styles */
+:root[theme="dark"]{
+    --primary-color: #f25a00;
+    --secondary-color: #f26d00;
+    --text-color: #f1f1f1;
+    --bg-color:#0e0e0e;
+    --card-bg: #1f1f1f;
+    --border-color: #e0e0e0;
+}
+:root[theme="light"]{
+    --primary-color: #f25a00;
+    --secondary-color: #f26d00;
+    --text-color: #1f1f1f;
+    --bg-color:#fdfdfd;
+    --card-bg: #f1f1f1;
+    --border-color: #e0e0e0;
+}
+
+* {
+transition: background-color 0.5s ease, color 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+ background-color:var(--primary-color);
+    color: var(--bg-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid: var(--primary-color);
+}
+
+.btn-large {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+background-color: var(--card-bg);
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+}
+
+/* Hero Section */
+.hero {
+    padding: 150px 0 100px;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    max-width: 100%;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.features {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+#features h2 {
+    color: var(--secondary-color);
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.steps {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.step {
+background-color: var(--card-bg);
+    text-align: center;
+    flex: 1;
+    margin:10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.step-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.benefit-grid {
+background-color:var(--bg-color);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.benefit-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-card i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    color: var(--secondary-color);
+
+}
+
+/* CTA Section */
+.cta {
+    padding: 100px 0;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+}
+
+.cta h2 {
+    margin-bottom: 20px;
+}
+
+.cta p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.footer-links, .footer-contact, .footer-social {
+    margin-bottom: 30px;
+}
+
+.footer-links h4, .footer-contact h4, .footer-social h4 {
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a, .footer-social a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: white;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .steps {
+        flex-direction: column;
+    }
+
+    .step {
+        margin-bottom: 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+   </style>
+   <link href="https://unpkg.com/heroicons@1.0.6/dist/outline.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <input type="checkbox" id="themeToggle" style="display:none" onchange="document.documentElement.setAttribute('theme', this.checked ? 'dark' : 'light'); document.getElementById('themeIcon').className = this.checked ? 'fas fa-moon' : 'fas fa-sun';">
+<label for="themeToggle"><i id="themeIcon" class="fas fa-sun"></i></label>
+        
+            <div class="logo">InsightHub</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#" class="btn btn-secondary">Log In</a></li>
+                <li><a href="#" class="btn btn-primary">Sign Up</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Transform Your Content into Insights</h1>
+                <p>Effortlessly create interactive MCQs, flashcards, and visualizations from your data</p>
+                <a href="#" class="btn btn-primary btn-large">Get Started</a>
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2850&q=80" alt="Data visualization" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why Choose InsightHub?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="icon-content-management"></i>
+                        <h3>Effortless Content Management</h3>
+                        <p>Securely access your personalized dashboard and manage your content with ease.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="icon-visualization"></i>
+                        <h3>Enhanced Visualization</h3>
+                        <p>Transform your data into interactive MCQs, flashcards, and visualizations using AI.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="icon-dashboard"></i>
+                        <h3>Dynamic Dashboard</h3>
+                        <p>Access all your created sets through a comprehensive and user-friendly interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="icon-profile"></i>
+                        <h3>Personalized Profile</h3>
+                        <p>Customize your experience and track your activities with a tailored profile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Log In</h3>
+                        <p>Access your secure account</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Upload Content</h3>
+                        <p>Add files or input manually</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Transform Data</h3>
+                        <p>Create MCQs, flashcards, or visuals</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Explore Dashboard</h3>
+                        <p>Manage and view your content</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <h2>Who Can Benefit?</h2>
+                <div class="benefit-grid">
+                    <div class="benefit-card">
+                        <i class="icon-students"></i>
+                        <h3>Students & Learners</h3>
+                        <p>Simplify study sessions and enhance retention with custom MCQs and flashcards.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="icon-professionals"></i>
+                        <h3>Professionals & Analysts</h3>
+                        <p>Convert data into actionable insights and visualizations for presentations or reports.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="icon-everyone"></i>
+                        <h3>Anyone with Information</h3>
+                        <p>Turn your content into structured, meaningful formats, regardless of the subject matter.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Get Started Today!</h2>
+                <p>Join a growing community of users who are transforming their content and making information more accessible and engaging.</p>
+                <a href="#" class="btn btn-primary btn-large">Sign Up Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">InsightHub</div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: support@insighthub.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <a href="#" class="social-icon"><i class="icon-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="icon-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="icon-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="icon-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 InsightHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});</script>
+</body>
+</html>
