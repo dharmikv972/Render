@@ -1,0 +1,107 @@
+******************************* MAIN ACTIVITY CODE*************************************************
+
+package com.example.progressbar
+
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var startProgressButton: Button
+    private lateinit var horizontalProgressBar: ProgressBar
+    private lateinit var titleTextView: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Initialize views
+        startProgressButton = findViewById(R.id.startProgressButton)
+        horizontalProgressBar = findViewById(R.id.horizontalProgressBar)
+        titleTextView = findViewById(R.id.titleTextView)
+
+        // Set button click listener
+        startProgressButton.setOnClickListener {
+            startProgress()
+        }
+    }
+
+    private fun startProgress() {
+        // Hide the button and show the progress bar and title
+        startProgressButton.visibility = Button.GONE
+        horizontalProgressBar.visibility = ProgressBar.VISIBLE
+        titleTextView.visibility = TextView.VISIBLE
+
+        horizontalProgressBar.progress = 0
+        titleTextView.text = "Download: 0%"
+
+        val handler = Handler(Looper.getMainLooper())
+        var progressStatus = 0
+
+        // Simulate the progress in a thread
+        Thread {
+            while (progressStatus < 100) {
+                progressStatus += 10
+                Thread.sleep(500) // Simulate work (500ms per step)
+
+                // Update the progress bar and title on the main thread
+                handler.post {
+                    horizontalProgressBar.progress = progressStatus
+                    titleTextView.text = "Download: $progressStatus%"
+                }
+            }
+            // Reset UI after progress completion
+            handler.post {
+                horizontalProgressBar.visibility = ProgressBar.GONE
+                titleTextView.text = "Download Successfully"
+                startProgressButton.visibility = Button.VISIBLE // Show the button again
+            }
+        }.start()
+    }
+}
+
+
+
+**********************************************XML FILE CODE*******************************************
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <!-- Button to start progress -->
+    <Button
+        android:id="@+id/startProgressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download Now" />
+
+    <!-- Horizontal ProgressBar -->
+    <ProgressBar
+        android:id="@+id/horizontalProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:visibility="gone"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:text="Progress: 0%"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>

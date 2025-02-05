@@ -1,0 +1,184 @@
+******************************XML FILE CODE****************************************
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- TableLayout -->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:padding="8dp">
+
+            <!-- Table Row with ImageButton -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/actionButton1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_normal_image"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_button_selector" />
+            </TableRow>
+
+            <!-- Table Row with ImageButton -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/actionButton2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sd"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fd" />
+            </TableRow>
+
+
+            <!-- Table Row with ImageButton -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/actionButton4"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/a"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton5"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sdsd" />
+            </TableRow>
+            <!-- Add more rows as needed -->
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/actionButton7"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_normal_image"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton8"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_button_selector" />
+            </TableRow>
+
+
+            <!-- Table Row with ImageButton -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/actionButton9"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sd"
+                    android:background="?android:selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton10"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fd" />
+            </TableRow>
+
+        </TableLayout>
+
+        <!-- ImageButton that changes images based on state (using selector) -->
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+****************************************MAIN ACTIVITY*****************************
+
+package com.example.image
+
+
+import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Get reference to ImageButton
+        val imageButton: ImageButton = findViewById(R.id.imageButton)
+
+        // Set a click listener for the ImageButton
+        imageButton.setOnClickListener {
+            // Show a Toast message when the ImageButton is clicked
+            Toast.makeText(this, "Image Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
